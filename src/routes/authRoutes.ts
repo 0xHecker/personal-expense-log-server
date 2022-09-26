@@ -9,7 +9,7 @@ import {
 
 router.get('/me', auth_user);
 
-router.post('/signin', auth_login);
+router.post('/login', auth_login);
 
 router.post('/logout', auth_logout);
 

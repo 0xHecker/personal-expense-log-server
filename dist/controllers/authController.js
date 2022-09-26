@@ -35,8 +35,8 @@ exports.auth_login = auth_login;
 const auth_register = async (req, res) => {
     const { email } = req.body;
     const { password } = req.body;
-    const { firstName } = req.body;
-    if (!email || !password || !firstName) {
+    const { firstName = '' } = req.body;
+    if (!email || !password) {
         res.status(400).json({ message: 'Fields Missing' });
         return;
     }

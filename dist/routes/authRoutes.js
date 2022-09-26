@@ -7,7 +7,7 @@ const express_1 = __importDefault(require("express"));
 const router = express_1.default.Router();
 const authController_1 = require("../controllers/authController");
 router.get('/me', authController_1.auth_user);
-router.post('/signin', authController_1.auth_login);
+router.post('/login', authController_1.auth_login);
 router.post('/logout', authController_1.auth_logout);
 router.post('/register', authController_1.auth_register);
 exports.default = router;
