@@ -1,5 +1,7 @@
 import express from 'express';
 const router = express.Router();
+import requireAuth from '../middleware/requireAuth';
+
 import {
   auth_login,
   auth_register,
@@ -7,11 +9,12 @@ import {
   auth_logout,
 } from '../controllers/authController';
 
-router.get('/me', auth_user);
+router.get('/me', requireAuth, auth_user);
 
 router.post('/login', auth_login);
 
-router.post('/logout', auth_logout);
+router.post('/logout', requireAuth, auth_logout);
 
 router.post('/register', auth_register);
+
 export default router;

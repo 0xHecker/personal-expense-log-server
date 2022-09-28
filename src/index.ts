@@ -6,6 +6,8 @@ import { PrismaSessionStore } from '@quixo3/prisma-session-store';
 
 import authRoutes from './routes/authRoutes';
 import userRoutes from './routes/userRouter';
+import transactionRoutes from './routes/transactionRoutes';
+import categoryRoutes from './routes/categoryRoutes';
 
 const app = express();
 app.use(
@@ -30,7 +32,7 @@ app.use(
     saveUninitialized: true,
     // @ts-ignore
     store: new PrismaSessionStore(prisma, {
-      checkPeriod: 60 * 24 * 60 * 60 * 1000, //ms
+      checkPeriod: 60 * 60 * 1000, //ms
       dbRecordIdIsSessionId: true,
       dbRecordIdFunction: undefined,
     }),
@@ -42,6 +44,9 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/api', authRoutes);
 app.use('/api', userRoutes);
+app.use('/api', transactionRoutes);
+app.use('/api', categoryRoutes);
+
 const port = Number(process.env.PORT ?? 8080);
 app.listen(port, '0.0.0.0', () => {
   console.log(`Server started at http://localhost:${port}`);
