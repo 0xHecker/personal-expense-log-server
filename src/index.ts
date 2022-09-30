@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import express from 'express';
 import cors from 'cors';
 import prisma from './constants/config';
@@ -10,20 +11,13 @@ import authRoutes from './routes/authRoutes';
 import userRoutes from './routes/userRouter';
 import transactionRoutes from './routes/transactionRoutes';
 import categoryRoutes from './routes/categoryRoutes';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-app.use(express.static(path.join(__dirname, 'clientBuild')));
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
 app.use(
   cors({
-    origin: [
-      'http://localhost:3000',
-      'https://localhost:8080',
-      process.env.ORIGIN_WEBSITE,
-    ],
+    origin: ['http://localhost:3000', 'https://localhost:8080'],
     methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD', 'DELETE', 'PATCH'],
     credentials: true,
   }),

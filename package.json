@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "gen-env": "yarn gen-env-types .env -o src/env.d.ts -e .",
     "build": "rm -rf dist && tsc",
+    "build:dev": "rm -rf dist && tsc && yarn prisma:generate",
     "watch": "tsc -w",
     "dev": "nodemon dist/index.js",
     "start": "node dist/index.js",
@@ -33,8 +35,10 @@
     "@types/express": "^4.17.14",
     "@types/express-session": "^1.17.5",
     "@types/node": "^18.7.18",
+    "gen-env-types": "^1.3.4",
     "nodemon": "^2.0.20",
     "prisma": "^4.3.1",
+    "reflect-metadata": "^0.1.13",
     "ts-node": "^10.9.1",
     "typescript": "^4.8.3"
   }
