@@ -6,7 +6,7 @@
   "scripts": {
     "gen-env": "yarn gen-env-types .env -o src/env.d.ts -e .",
     "build": "rm -rf dist && tsc",
-    "build:dev": "rm -rf dist && tsc && yarn prisma:generate",
+    "build:dev": "tsc && yarn prisma:generate",
     "watch": "tsc -w",
     "dev": "nodemon dist/index.js",
     "start": "node dist/index.js",
