@@ -4,7 +4,11 @@ import { DateTime } from 'luxon';
 const categories_get = async (req: any, res: any) => {
   let ctgs;
   try {
-    ctgs = await prisma.transactionCategory.findMany();
+    ctgs = await prisma.transactionCategory.findMany({
+      where: {
+        userId: req.session.userId,
+      },
+    });
 
     if (ctgs) res.status(200).json({ ctgs });
   } catch {

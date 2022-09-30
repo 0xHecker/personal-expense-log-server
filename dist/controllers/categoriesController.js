@@ -9,7 +9,11 @@ const luxon_1 = require("luxon");
 const categories_get = async (req, res) => {
     let ctgs;
     try {
-        ctgs = await config_1.default.transactionCategory.findMany();
+        ctgs = await config_1.default.transactionCategory.findMany({
+            where: {
+                userId: req.session.userId,
+            },
+        });
         if (ctgs)
             res.status(200).json({ ctgs });
     }

@@ -93,7 +93,7 @@ export const auth_register = async (req: any, res: any) => {
 export const auth_logout = async (req: any, res: any) => {
   req.session.destroy((err: Error) => {
     if (err) res.status(500).send('Cannot destroy session');
-    else res.status(200).send('Deleted');
+    else res.status(200).send('Session destroyed');
   });
 };
 
