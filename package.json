@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "gen-env": "yarn gen-env-types .env -o src/env.d.ts -e .",
-    "build": "yarn",
+    "build": "yarn tsc",
     "build:dev": "tsc && yarn prisma:generate",
     "watch": "tsc -w",
     "dev": "nodemon dist/index.js",

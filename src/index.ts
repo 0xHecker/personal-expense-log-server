@@ -16,21 +16,25 @@ dotenv.config();
 const app = express();
 app.use(
   cors({
-    origin: ['http://localhost:3000', 'https://localhost:8080'],
+    origin: [
+      'http://localhost:3000',
+      'https://localhost:8080',
+      process.env.CORS_ORIGIN,
+    ],
     methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD', 'DELETE', 'PATCH'],
     credentials: true,
   }),
 );
 
 app.set('trust proxy', 1);
-
+console.log(process.env.CORS_ORIGIN);
 //SESSIONS
 app.use(
   expressSession({
     name: 'cookiee',
     cookie: {
       secure: process.env.NODE_ENV === 'production',
-      sameSite: process.env.NODE_ENV === 'production' ? 'lax' : 'strict',
+      sameSite: 'none', // process.env.NODE_ENV === 'production' ? 'lax' : 'strict'
       maxAge: 7 * 24 * 60 * 60 * 1000,
     },
     secret: process.env.SECRET,
@@ -53,10 +57,10 @@ app.use('/api', userRoutes);
 app.use('/api', transactionRoutes);
 app.use('/api', categoryRoutes);
 app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'clientBuild', 'index.html'));
+  res.send('Path dodes not exist');
 });
 
 const port = Number(process.env.PORT ?? 8080);
 app.listen(port, '0.0.0.0', () => {
-  console.log(`Server started at http://localhost:${port}`);
+  console.log(`Server started at Port: ${port}`);
 });

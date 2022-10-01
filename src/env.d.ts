@@ -4,7 +4,7 @@ declare global {
       DATABASE_URL: string;
       PORT: string;
       NODE_ENV: string;
-      ORIGIN_WEBSITE: string;
+      CORS_ORIGIN: string;
       SECRET: string;
     }
   }

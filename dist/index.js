@@ -9,7 +9,6 @@ const cors_1 = __importDefault(require("cors"));
 const config_1 = __importDefault(require("./constants/config"));
 const express_session_1 = __importDefault(require("express-session"));
 const prisma_session_store_1 = require("@quixo3/prisma-session-store");
-const path_1 = __importDefault(require("path"));
 const authRoutes_1 = __importDefault(require("./routes/authRoutes"));
 const userRouter_1 = __importDefault(require("./routes/userRouter"));
 const transactionRoutes_1 = __importDefault(require("./routes/transactionRoutes"));
@@ -18,11 +17,16 @@ const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)({
-    origin: ['http://localhost:3000', 'https://localhost:8080'],
+    origin: [
+        'http://localhost:3000',
+        'https://localhost:8080',
+        process.env.CORS_ORIGIN,
+    ],
     methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD', 'DELETE', 'PATCH'],
     credentials: true,
 }));
 app.set('trust proxy', 1);
+console.log(process.env.CORS_ORIGIN);
 app.use((0, express_session_1.default)({
     name: 'cookiee',
     cookie: {
@@ -46,10 +50,10 @@ app.use('/api', userRouter_1.default);
 app.use('/api', transactionRoutes_1.default);
 app.use('/api', categoryRoutes_1.default);
 app.get('/*', (req, res) => {
-    res.sendFile(path_1.default.join(__dirname, 'clientBuild', 'index.html'));
+    res.send('Path dodes not exist');
 });
 const port = Number((_a = process.env.PORT) !== null && _a !== void 0 ? _a : 8080);
 app.listen(port, '0.0.0.0', () => {
-    console.log(`Server started at http://localhost:${port}`);
+    console.log(`Server started at Port: ${port}`);
 });
 //# sourceMappingURL=index.js.map
