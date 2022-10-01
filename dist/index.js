@@ -31,7 +31,7 @@ app.use((0, express_session_1.default)({
     name: 'cookiee',
     cookie: {
         secure: process.env.NODE_ENV === 'production',
-        sameSite: process.env.NODE_ENV === 'production' ? 'lax' : 'strict',
+        sameSite: 'none',
         maxAge: 7 * 24 * 60 * 60 * 1000,
     },
     secret: process.env.SECRET,
