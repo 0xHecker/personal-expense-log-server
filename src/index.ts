@@ -3,8 +3,6 @@ import cors from 'cors';
 import prisma from './constants/config';
 import expressSession from 'express-session';
 import { PrismaSessionStore } from '@quixo3/prisma-session-store';
-import path from 'path';
-import { fileURLToPath } from 'url';
 
 import authRoutes from './routes/authRoutes';
 import userRoutes from './routes/userRouter';
@@ -14,11 +12,11 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
-app.use(
-  cors({
-    origin: '*',
-  }),
-);
+// app.use(
+//   cors({
+//     origin: '*',
+//   }),
+// );
 // app.all('*', function (req, res) {
 //   res.header('Access-Control-Allow-Origin', '*');
 //   res.header(
