@@ -16,25 +16,18 @@ dotenv.config();
 const app = express();
 app.use(
   cors({
-    origin: [
-      'http://localhost:3000',
-      'https://localhost:8080',
-      'https://personal-expense-log.vercel.app/',
-      process.env.CORS_ORIGIN,
-    ],
-    methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD', 'DELETE', 'PATCH'],
-    credentials: true,
+    origin: '*',
   }),
 );
-app.all('*', function (req, res) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Content-Type,Content-Length, Authorization, Accept,X-Requested-With',
-  );
-  res.header('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS');
-  //...
-});
+// app.all('*', function (req, res) {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   res.header(
+//     'Access-Control-Allow-Headers',
+//     'Content-Type,Content-Length, Authorization, Accept,X-Requested-With',
+//   );
+//   res.header('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS');
+//   //...
+// });
 
 app.set('trust proxy', 1);
 console.log(process.env.CORS_ORIGIN);
