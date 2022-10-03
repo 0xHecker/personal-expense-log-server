@@ -17,15 +17,15 @@ const app = express();
 //     origin: '*',
 //   }),
 // );
-// app.all('*', function (req, res) {
-//   res.header('Access-Control-Allow-Origin', '*');
-//   res.header(
-//     'Access-Control-Allow-Headers',
-//     'Content-Type,Content-Length, Authorization, Accept,X-Requested-With',
-//   );
-//   res.header('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS');
-//   //...
-// });
+app.all('*', function (req, res) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Content-Type,Content-Length, Authorization, Accept,X-Requested-With',
+  );
+  res.header('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS');
+  //...
+});
 
 app.set('trust proxy', 1);
 console.log(process.env.CORS_ORIGIN);
