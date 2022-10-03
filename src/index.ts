@@ -19,6 +19,7 @@ app.use(
     origin: [
       'http://localhost:3000',
       'https://localhost:8080',
+      'https://personal-expense-log.vercel.app/',
       process.env.CORS_ORIGIN,
     ],
     methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD', 'DELETE', 'PATCH'],
