@@ -37,10 +37,44 @@
 - `/userprofile/delete`
 
 
+## Scripts
+
+```sh
+> yarn build ### builds and compiles down to js
+> yarn watch ### builds in dev mode with watch
+> yarn start ### starts the server
+> yarn dev ### starts the server in dev mode with watch mode on
+> yarn start:tsnode ### starts the server with the ts-node
+> yarn prisma:generate ### generates the sql migration file
+> yarn gen-env ### generates .env.example file and generates the types for the environment variables
+```
+
+## How to run on your machine
+
+```sh
+> git clone https://github.com/0xHecker/personal-expense-log-server.git
+> cd personal-expense-log-server
+```
+
+- Have your postgres database up and running
+- Create .env file and setup your env variables
 
 
+```sh
+DATABASE_URL=    ### your postgres connection url 
+PORT=            ### port you want the server to run on
+NODE_ENV=        ### production | dev
+CORS_ORIGIN=     ### your client url
+SECRET=          ### express session secret
+```
 
+run these commands
 
+```sh
+> yarn
+> yarn watch
+> yarn prisma:generate
+```
 
 
 
