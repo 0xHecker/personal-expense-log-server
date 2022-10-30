@@ -9,8 +9,6 @@
 - Express
 - Postgres sessions
 
-## Database Schema
-![image](https://user-images.githubusercontent.com/91829843/198884630-ce56f368-09d8-46ec-bd1e-c156106f27a8.png)
 
 ## API Routes
 
@@ -36,6 +34,8 @@
 - `/updateprofile/password`
 - `/userprofile/delete`
 
+## Database Schema
+<img src="https://user-images.githubusercontent.com/91829843/198884630-ce56f368-09d8-46ec-bd1e-c156106f27a8.png" width="800px" />
 
 ## Scripts
 
@@ -76,6 +76,9 @@ run these commands
 > yarn prisma:generate
 ```
 
+or 
+
+you can run the docker file
 
 
 
